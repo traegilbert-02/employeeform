@@ -1,0 +1,50 @@
+.employee-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.employee-form h2 {
+  margin-bottom: 20px;
+}
+
+.employee-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 110px 250px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.employee-form label {
+  margin: 0;
+  padding-right: 12px;
+  text-align: left;
+}
+
+.employee-form input {
+  width: 250px;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.employee-form button {
+  padding: 8px 16px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.employee-form button:hover {
+  background-color: #005fa3;
+}
