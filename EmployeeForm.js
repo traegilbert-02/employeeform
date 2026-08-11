@@ -21,18 +21,27 @@ class EmployeeForm extends React.Component {
     });
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
+handleSubmit = (event) => {
+  event.preventDefault();
 
-    console.log('Employee Information:', this.state);
-
-    this.setState({
-      name: '',
-      email: '',
-      title: '',
-      department: ''
-    });
+  const employee = {
+    name: this.state.name,
+    email: this.state.email,
+    title: this.state.title,
+    department: this.state.department
   };
+
+  this.props.addEmployee(employee);
+
+  console.log('Employee Information:', employee);
+
+  this.setState({
+    name: '',
+    email: '',
+    title: '',
+    department: ''
+  });
+};
 
   render() {
     return (
