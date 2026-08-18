@@ -48,3 +48,48 @@
 .employee-form button:hover {
   background-color: #005fa3;
 }
+.employee-list {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.employee-list h2 {
+  margin-bottom: 20px;
+}
+
+.employee-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.employee-list li {
+  margin-bottom: 10px;
+}
+
+.employee-list a {
+  color: #0077cc;
+  text-decoration: none;
+}
+
+.employee-list a:hover {
+  text-decoration: underline;
+}
+
+.employee-details {
+  width: 400px;
+  margin: 40px auto;
+  text-align: left;
+}
+
+.employee-details h2 {
+  text-align: center;
+}
+
+.employee-details a {
+  color: #0077cc;
+  text-decoration: none;
+}
+
+.employee-details a:hover {
+  text-decoration: underline;
+}
