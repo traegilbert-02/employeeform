@@ -9,7 +9,9 @@ class EmployeeForm extends React.Component {
       name: '',
       email: '',
       title: '',
-      department: ''
+      department: '',
+      errorMessage: '',
+      successMessage: ''
     };
   }
 
@@ -17,20 +19,51 @@ class EmployeeForm extends React.Component {
     const { name, value } = event.target;
 
     this.setState({
-      [name]: value
+      [name]: value,
+      errorMessage: '',
+      successMessage: ''
     });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log('Employee Information:', this.state);
+    const { name, email, title, department } = this.state;
 
+    // Check that all fields have been completed
+    if (
+      !name.trim() ||
+      !email.trim() ||
+      !title.trim() ||
+      !department.trim()
+    ) {
+      this.setState({
+        errorMessage: 'Please complete all fields.',
+        successMessage: ''
+      });
+      return;
+    }
+
+    const employee = {
+      EmployeeId: Date.now(),
+      name: name,
+      email: email,
+      title: title,
+      department: department
+    };
+
+    this.props.addEmployee(employee);
+
+    console.log('Employee Information:', employee);
+
+    // Clear the form after submission
     this.setState({
       name: '',
       email: '',
       title: '',
-      department: ''
+      department: '',
+      errorMessage: '',
+      successMessage: 'Employee added successfully!'
     });
   };
 
@@ -48,6 +81,7 @@ class EmployeeForm extends React.Component {
               name="name"
               value={this.state.name}
               onChange={this.handleChange}
+              required
             />
           </div>
 
@@ -59,6 +93,7 @@ class EmployeeForm extends React.Component {
               name="email"
               value={this.state.email}
               onChange={this.handleChange}
+              required
             />
           </div>
 
@@ -70,6 +105,7 @@ class EmployeeForm extends React.Component {
               name="title"
               value={this.state.title}
               onChange={this.handleChange}
+              required
             />
           </div>
 
@@ -81,8 +117,21 @@ class EmployeeForm extends React.Component {
               name="department"
               value={this.state.department}
               onChange={this.handleChange}
+              required
             />
           </div>
+
+          {this.state.errorMessage && (
+            <p className="error-message">
+              {this.state.errorMessage}
+            </p>
+          )}
+
+          {this.state.successMessage && (
+            <p className="success-message">
+              {this.state.successMessage}
+            </p>
+          )}
 
           <button type="submit">Add Employee</button>
         </form>
